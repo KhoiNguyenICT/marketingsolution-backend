@@ -12,7 +12,7 @@
         "sourceMap": true,
         "allowJs": true,
         "outDir": "./dist",
-        "baseUrl": "./src"
+        "baseUrl": "./src",
     },
     "include": [
         "src/**/*.ts"

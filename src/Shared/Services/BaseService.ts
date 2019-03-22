@@ -1,11 +1,10 @@
 import { Document, Model, Types } from 'mongoose';
 import { IRead } from '../Interfaces/IRead';
 import { IWrite } from '../Interfaces/IWrite';
-import { exec } from 'child_process';
 
 export default class RepositoryBase<T extends Document> implements IRead<T>, IWrite<T> {
 
-    private _model: Model<T>;
+    protected _model: Model<T>;
 
     constructor(schemaModel: Model<T>) {
         this._model = schemaModel;

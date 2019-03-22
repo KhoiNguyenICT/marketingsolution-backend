@@ -2,6 +2,7 @@ import ValueService from './../Services/ValueService';
 import { Request, Response, NextFunction } from 'express';
 import IValueModel from 'Schemas/ValueSchema';
 import { BaseController } from './BaseController';
+import StringExtension from '../Extensions/StringExtension';
 
 export default class ValueController extends BaseController {
 
@@ -28,7 +29,7 @@ export default class ValueController extends BaseController {
 
     async create(req: Request, res: Response, next: NextFunction) {
         const value: IValueModel = req.body as IValueModel;
-        const result = await this._valueService.create(value);
+        const result = await this._valueService.createAsync(value);
         return this.Ok(result, req, res, next);
     }
 

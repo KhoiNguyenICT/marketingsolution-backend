@@ -10,6 +10,8 @@ export default class ValueController extends BaseController {
     constructor() {
         super();
         this._valueService = new ValueService();
+        this.findById = this.findById.bind(this);
+        this.create = this.create.bind(this);
     }
 
     async find(req: Request, res: Response, next: NextFunction) {
@@ -26,7 +28,7 @@ export default class ValueController extends BaseController {
 
     async create(req: Request, res: Response, next: NextFunction) {
         const value: IValueModel = req.body as IValueModel;
-        const result = this._valueService.create(value);
+        const result = await this._valueService.create(value);
         return this.Ok(result, req, res, next);
     }
 

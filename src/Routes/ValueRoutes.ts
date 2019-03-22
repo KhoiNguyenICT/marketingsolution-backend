@@ -9,10 +9,10 @@ export default class ValueRoutes {
     get routes() {
         const router = express();
         const controller = this._valueController;
-        router.get('/list', controller.get);
-        router.post('/post', controller.post);
-        router.put('/:id', controller.put);
-        router.get('/:id', controller.getById);
+        router.get('/list', controller.find);
+        router.post('/create', controller.create);
+        router.put('/:id', controller.update);
+        router.get('/:id', controller.findById);
         router.delete('/:id', controller.delete);
 
         return router;

@@ -22,7 +22,10 @@
             true,
             "always"
         ],
-        "no-console": false
+        "no-console": false,
+        "object-literal-shorthand": false,
+        "no-shadowed-variable": false,
+        "no-empty-interface": false
     },
     "rulesDirectory": []
 }

@@ -1,35 +1,46 @@
-import { Request, Response } from 'express';
+import ValueService from './../Services/ValueService';
+import { Request, Response, NextFunction } from 'express';
+import IValueModel from 'Schemas/ValueSchema';
+import { BaseController } from './BaseController';
 
-export default class ValueController {
+export default class ValueController extends BaseController {
 
-    public get(req: Request, res: Response) {
-        const values = ['value1', 'value2'];
-        res.send(values);
+    private _valueService: ValueService;
+
+    constructor() {
+        super();
+        this._valueService = new ValueService();
     }
 
-    public getById(req: Request, res: Response) {
-        const { id } = req.params.id;
-        res.send(id);
+    async find(req: Request, res: Response, next: NextFunction) {
+        const value: IValueModel = req.body as IValueModel;
+        const result = await this._valueService.find(value);
+        return this.Ok(result, req, res, next);
     }
 
-    public post(req: Request, res: Response) {
-        const body = req.body;
-        res.send(body);
+    async findById(req: Request, res: Response, next: NextFunction) {
+        const id: string = req.params.id;
+        const result = await this._valueService.findById(id);
+        return this.Ok(result, req, res, next);
     }
 
-    public put(req: Request, res: Response) {
-        const { id } = req.params;
-        const body = req.body;
-        res.send({
-            method: 'PUT',
-            _id: id,
-            data: body,
-        });
+    async create(req: Request, res: Response, next: NextFunction) {
+        const value: IValueModel = req.body as IValueModel;
+        const result = this._valueService.create(value);
+        return this.Ok(result, req, res, next);
     }
 
-    public delete(req: Request, res: Response) {
-        const { id } = req.params;
-        res.send(id);
+    async update(req: Request, res: Response, next: NextFunction) {
+        const value: IValueModel = req.body as IValueModel;
+        const id: string = req.params.id;
+        const result = this._valueService.update(id, value);
+        return this.Ok(result, req, res, next);
+    }
+
+    async delete(req: Request, res: Response, next: NextFunction) {
+        const id: string = req.params.id;
+        const result = this._valueService.delete(id);
+        return this.Ok(result, req, res, next);
     }
 
 }

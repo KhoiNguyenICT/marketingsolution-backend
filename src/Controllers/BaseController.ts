@@ -1,5 +1,4 @@
 import { Request, Response, NextFunction } from 'express';
-// import * as httpStatus from 'http-status-code';
 
 export class BaseController {
 

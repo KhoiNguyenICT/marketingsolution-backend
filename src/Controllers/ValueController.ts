@@ -2,7 +2,7 @@ import ValueService from './../Services/ValueService';
 import { Request, Response, NextFunction } from 'express';
 import IValueModel from 'Schemas/ValueSchema';
 import { BaseController } from './BaseController';
-import StringExtension from '../Extensions/StringExtension';
+import QueryCommand from '../Commands/QueryCommand';
 
 export default class ValueController extends BaseController {
 
@@ -13,11 +13,12 @@ export default class ValueController extends BaseController {
         this._valueService = new ValueService();
         this.findById = this.findById.bind(this);
         this.create = this.create.bind(this);
+        this.find = this.find.bind(this);
     }
 
     async find(req: Request, res: Response, next: NextFunction) {
-        const value: IValueModel = req.body as IValueModel;
-        const result = await this._valueService.find(value);
+        const command: QueryCommand = req.body as QueryCommand;
+        const result = await this._valueService.queryAsync(command);
         return this.Ok(result, req, res, next);
     }
 

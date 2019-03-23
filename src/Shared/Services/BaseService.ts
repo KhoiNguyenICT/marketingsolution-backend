@@ -1,6 +1,8 @@
+import { QueryResult } from './../../Extensions/QueryResultExtensions';
 import { Document, Model, Types } from 'mongoose';
 import { IRead } from '../Interfaces/IRead';
 import { IWrite } from '../Interfaces/IWrite';
+import QueryCommand from '../../Commands/QueryCommand';
 
 export default class RepositoryBase<T extends Document> implements IRead<T>, IWrite<T> {
 
@@ -8,6 +10,20 @@ export default class RepositoryBase<T extends Document> implements IRead<T>, IWr
 
     constructor(schemaModel: Model<T>) {
         this._model = schemaModel;
+    }
+
+    async query(command: QueryCommand): Promise<QueryResult<T>> {
+        const data = await this._model.find(command.filter)
+            .sort({ updated_at: 1 })
+            .skip((command.currentPage - 1) * command.pageSize)
+            .limit(command.pageSize);
+        const totalRow = data.length;
+        const paginationResult = new QueryResult<T>();
+        paginationResult.currentPage = command.currentPage;
+        paginationResult.rowCount = totalRow;
+        paginationResult.pageSize = command.pageSize;
+        paginationResult.results = data;
+        return paginationResult;
     }
 
     async create(item: T): Promise<T> {

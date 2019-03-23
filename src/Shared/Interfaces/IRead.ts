@@ -1,6 +1,8 @@
-import { Document, Model, Types } from 'mongoose';
+import { QueryResult } from './../../Extensions/QueryResultExtensions';
+import QueryCommand from '../../Commands/QueryCommand';
 
 export interface IRead<T> {
-    find(filter: any);
-    findById(id: string);
+    query(command: QueryCommand): Promise<QueryResult<T>>;
+    find(filter: any): Promise<T[]>;
+    findById(id: string): Promise<T>;
 }

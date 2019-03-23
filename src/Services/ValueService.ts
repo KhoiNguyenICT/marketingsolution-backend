@@ -3,14 +3,15 @@ import BaseService from '../Shared/Services/BaseService';
 import IValueModel from '../Schemas/ValueSchema';
 import { schema } from '../Schemas/ValueSchema';
 import StringExtension from '../Extensions/StringExtension';
-import QueryCommand from '../Commands/QueryCommand';
+import ValueQueryCommand from '../Commands/ValueQueryCommand';
 
 export default class ValueService extends BaseService<IValueModel> {
     constructor() {
         super(schema);
     }
 
-    async queryAsync(command: QueryCommand): Promise<QueryResult<IValueModel>> {
+    async queryAsync(command: ValueQueryCommand): Promise<QueryResult<IValueModel>> {
+        command.filter = { $text: { $search: command.textSearch } };
         const result = await this.query(command);
         return result;
     }

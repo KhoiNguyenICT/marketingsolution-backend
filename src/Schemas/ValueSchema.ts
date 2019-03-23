@@ -21,21 +21,12 @@ class ValueSchema {
                 type: String,
                 required: true,
             },
-            name_index: {
-                type: String,
-                required: true,
-                index: true,
-            },
-            value_index: {
-                type: String,
-                required: true,
-                index: true,
-            },
         });
         schema.plugin(timestamp, {
             createdAt: 'created_at',
             updatedAt: 'updated_at',
         });
+        schema.index({ '$**': 'text' });
         return schema;
     }
 

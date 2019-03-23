@@ -16,7 +16,6 @@ export class QueryResult<T> implements IQueryResult<T> {
     rowCount: number;
 
     firstRowOnPage() {
-        const tmp = (this.currentPage - 1) * this.pageSize - 1;
         return (this.currentPage - 1) * this.pageSize - 1;
     }
 

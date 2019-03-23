@@ -3,14 +3,17 @@ import { Request, Response, NextFunction } from 'express';
 import IValueModel from 'Schemas/ValueSchema';
 import { BaseController } from './BaseController';
 import QueryCommand from '../Commands/QueryCommand';
+import LogService from '../Services/LogService';
 
 export default class ValueController extends BaseController {
 
     private _valueService: ValueService;
+    private _logService: LogService;
 
     constructor() {
         super();
         this._valueService = new ValueService();
+        this._logService = new LogService();
         this.findById = this.findById.bind(this);
         this.create = this.create.bind(this);
         this.find = this.find.bind(this);
@@ -19,6 +22,7 @@ export default class ValueController extends BaseController {
     async find(req: Request, res: Response, next: NextFunction) {
         const command: QueryCommand = req.body as QueryCommand;
         const result = await this._valueService.queryAsync(command);
+        this._logService.info('Find Values');
         return this.Ok(result, req, res, next);
     }
 

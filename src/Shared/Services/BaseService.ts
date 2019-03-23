@@ -4,7 +4,7 @@ import { IRead } from '../Interfaces/IRead';
 import { IWrite } from '../Interfaces/IWrite';
 import QueryCommand from '../../Commands/QueryCommand';
 
-export default class RepositoryBase<T extends Document> implements IRead<T>, IWrite<T> {
+export default class BaseService<T extends Document> implements IRead<T>, IWrite<T> {
 
     protected _model: Model<T>;
 
@@ -14,13 +14,12 @@ export default class RepositoryBase<T extends Document> implements IRead<T>, IWr
 
     async query(command: QueryCommand): Promise<QueryResult<T>> {
         const data = await this._model.find(command.filter)
-            .sort({ updated_at: 1 })
+            .sort({ updated_at: -1 })
             .skip((command.currentPage - 1) * command.pageSize)
             .limit(command.pageSize);
-        const totalRow = data.length;
         const paginationResult = new QueryResult<T>();
         paginationResult.currentPage = command.currentPage;
-        paginationResult.rowCount = totalRow;
+        paginationResult.rowCount = await this._model.find(command.filter).countDocuments();
         paginationResult.pageSize = command.pageSize;
         paginationResult.results = data;
         return paginationResult;

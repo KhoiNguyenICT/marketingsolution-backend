@@ -4,6 +4,8 @@ import * as bodyParser from 'body-parser';
 import * as dotenv from 'dotenv';
 import * as mongoose from 'mongoose';
 import * as morgan from 'morgan';
+import * as mongooseMorgan from 'mongoose-morgan';
+import ConnectionNames from '../Shared/Constants/CollectionNames';
 
 export class StartupHelper {
 
@@ -15,6 +17,10 @@ export class StartupHelper {
         express.use(bodyParser.urlencoded({ extended: true }));
         express.use(bodyParser.json());
         express.use(morgan('dev'));
+        express.use(mongooseMorgan({
+            collection: ConnectionNames.Logs,
+            connectionString: process.env.MONGO_URI,
+        }));
     }
 
     public static ConfigRouters(application: Application) {

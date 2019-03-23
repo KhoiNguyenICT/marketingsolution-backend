@@ -1,0 +1,93 @@
+{
+	"variables": [],
+	"info": {
+		"name": "MarketingSolution",
+		"_postman_id": "f16bc615-94ba-afef-3ad5-1261750a84ae",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:3000/api/value/create",
+			"request": {
+				"url": "http://localhost:3000/api/value/create",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Đào Khôi Nguyên\",\n\t\"value\": \"Đại Học Bách Khoa Hà Nội\"\n}"
+				},
+				"description": "Create New Value"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/value/list",
+			"request": {
+				"url": "http://localhost:3000/api/value/list",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"currentPage\": 1,\n    \"pageSize\": 2,\n    \"textSearch\": \"bach khoa\"\n}"
+				},
+				"description": "Query Value"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/value/5c9681911823552feceaed30",
+			"request": {
+				"url": "http://localhost:3000/api/value/5c9681911823552feceaed30",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Đào Khôi Nguyên\",\n    \"value\": \"Đại Học Quốc Gia Hà Nội\"\n}"
+				},
+				"description": "Update Value"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/value/5c96817f1823552feceaed2e",
+			"request": {
+				"url": "http://localhost:3000/api/value/5c9681ab1823552feceaed36",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": "Get value by id"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/api/value/5c96817f1823552feceaed2e",
+			"request": {
+				"url": "http://localhost:3000/api/value/5c96817f1823552feceaed2e",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Get value by id"
+			},
+			"response": []
+		}
+	]
+}

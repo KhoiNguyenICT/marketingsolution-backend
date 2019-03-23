@@ -14,6 +14,8 @@ export default class ValueController extends BaseController {
         this.findById = this.findById.bind(this);
         this.create = this.create.bind(this);
         this.find = this.find.bind(this);
+        this.update = this.update.bind(this);
+        this.delete = this.delete.bind(this);
     }
 
     async find(req: Request, res: Response, next: NextFunction) {

@@ -26,7 +26,9 @@
         "object-literal-shorthand": false,
         "no-shadowed-variable": false,
         "no-empty-interface": false,
-        "max-classes-per-file": false
+        "max-classes-per-file": false,
+        "no-unused-expression": false,
+        "no-conditional-assignment": false
     },
     "rulesDirectory": []
 }

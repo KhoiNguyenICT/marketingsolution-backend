@@ -13,7 +13,10 @@ export default class BaseService<T extends Document> implements IRead<T>, IWrite
     }
 
     async query(command: QueryCommand): Promise<QueryResult<T>> {
+        (command.textSearch) ? (command.filter = { $text: { $search: command.textSearch } }) : (command.filter = null);
+        (command.populate) ? (command.populate) : (command.populate = '');
         const data = await this._model.find(command.filter)
+            .populate(command.populate)
             .sort({ updated_at: -1 })
             .skip((command.currentPage - 1) * command.pageSize)
             .limit(command.pageSize);

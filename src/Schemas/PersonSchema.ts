@@ -23,8 +23,8 @@ class PersonSchema {
             },
             company: {
                 type: Schema.Types.ObjectId,
+                ref: CollectionNames.Companies,
                 required: false,
-                ref: PopulateNames.Company,
             },
         }, { versionKey: false });
         schema.plugin(timestamp, {

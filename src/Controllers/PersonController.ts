@@ -2,7 +2,7 @@ import PersonService from '../Services/PersonService';
 import { Request, Response, NextFunction } from 'express';
 import IPersonModel from 'Schemas/PersonSchema';
 import { BaseController } from './BaseController';
-import ValueQueryCommand from '../Commands/ValueQueryCommand';
+import PersonQueryCommand from '../Commands/PersonQueryCommand';
 
 export default class PersonController extends BaseController {
 
@@ -19,7 +19,7 @@ export default class PersonController extends BaseController {
     }
 
     async find(req: Request, res: Response, next: NextFunction) {
-        const command: ValueQueryCommand = req.body as ValueQueryCommand;
+        const command: PersonQueryCommand = req.body as PersonQueryCommand;
         const result = await this._personService.queryAsync(command);
         return this.Ok(result, req, res, next);
     }

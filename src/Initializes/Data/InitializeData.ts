@@ -11,14 +11,20 @@ export class InitializeData {
         this.initPersonData = this.initPersonData.bind(this);
     }
 
-    init() {
-        this.initPersonData();
+    async init() {
+        if (process.env.ENVIRONMENT_HOSTING === 'development') {
+            await this.initPersonData();
+        }
     }
 
     async initPersonData() {
-        const path = `${__dirname}\\Persons.json`;
-        const json = await fs.readFileSync(path, 'utf8');
+        const json = await fs.readFileSync(this.createPath('Persons.json'), 'utf8');
         const items = JSON.parse(json) as IPersonModel[];
         this._personService.initialize(items);
     }
+
+    private createPath(fileName: string): string {
+        return `${__dirname}\\${fileName}`;
+    }
+
 }

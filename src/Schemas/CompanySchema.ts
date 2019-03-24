@@ -1,15 +1,13 @@
-import ConnectionNames from '../Shared/Constants/CollectionNames';
+import CollectionNames from '../Shared/Constants/CollectionNames';
 import { Document, model, Schema } from 'mongoose';
 import * as timestamp from 'mongoose-timestamp';
 
-export default interface IValueModel extends Document {
+export default interface ICompanyModel extends Document {
     name: string;
-    value: string;
-    name_index: string;
-    value_index: string;
+    address: string;
 }
 
-class ValueSchema {
+class CompanySchema {
 
     static get schema() {
         const schema = new Schema({
@@ -17,11 +15,11 @@ class ValueSchema {
                 type: String,
                 required: true,
             },
-            value: {
+            address: {
                 type: String,
                 required: true,
             },
-        });
+        }, { versionKey: false });
         schema.plugin(timestamp, {
             createdAt: 'created_at',
             updatedAt: 'updated_at',
@@ -32,4 +30,4 @@ class ValueSchema {
 
 }
 
-export const schema = model<IValueModel>(ConnectionNames.Values, ValueSchema.schema);
+export const schema = model<ICompanyModel>(CollectionNames.Companies, CompanySchema.schema);

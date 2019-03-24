@@ -1,14 +1,14 @@
 import * as express from 'express';
-import ValueController from '../Controllers/ValueController';
+import PersonController from '../Controllers/PersonController';
 
-export default class ValueRoutes {
-    private readonly _valueController: ValueController;
+export default class PersonRoutes {
+    private readonly _personController: PersonController;
     constructor() {
-        this._valueController = new ValueController();
+        this._personController = new PersonController();
     }
     get routes() {
         const router = express();
-        const controller = this._valueController;
+        const controller = this._personController;
         router.post('/list', controller.find);
         router.post('/create', controller.create);
         router.put('/:id', controller.update);

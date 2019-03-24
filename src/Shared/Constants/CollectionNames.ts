@@ -1,4 +1,5 @@
 export default class CollectionNames {
-    static Values: string = 'values';
+    static Persons: string = 'persons';
+    static Companies: string = 'companies';
     static Logs: string = 'logs';
 }

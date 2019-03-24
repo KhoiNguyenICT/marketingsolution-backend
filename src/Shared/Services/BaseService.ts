@@ -12,6 +12,13 @@ export default class BaseService<T extends Document> implements IRead<T>, IWrite
         this._model = schemaModel;
     }
 
+    async initialize(items: T[]) {
+        const data = await this._model.find({});
+        if (data.length === 0) {
+            await this._model.insertMany(items);
+        }
+    }
+
     async query(command: QueryCommand): Promise<QueryResult<T>> {
         (command.textSearch) ? (command.filter = { $text: { $search: command.textSearch } }) : (command.filter = null);
         (command.populate) ? (command.populate) : (command.populate = '');

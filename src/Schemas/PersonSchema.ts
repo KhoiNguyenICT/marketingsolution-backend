@@ -17,6 +17,10 @@ class PersonSchema {
                 type: String,
                 required: true,
             },
+            nick_name: {
+                type: String,
+                required: true,
+            },
             level: {
                 type: String,
                 required: true,

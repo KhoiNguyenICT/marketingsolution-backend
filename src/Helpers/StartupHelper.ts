@@ -24,7 +24,7 @@ export class StartupHelper {
     }
 
     public static ConfigRouters(application: Application) {
-        application.use('/api', new MainRoutes().routes);
+        application.use('/api', new MainRoutes().Routes);
     }
 
     public static ConfigDatabase() {

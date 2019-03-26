@@ -13,9 +13,11 @@
         "allowJs": true,
         "outDir": "./dist",
         "baseUrl": "./src",
+        "resolveJsonModule": true
     },
     "include": [
-        "src/**/*.ts"
+        "src/**/*.ts",
+        "src/Initializes/Data/*.json"
     ],
     "exclude": [
         "node_modules"

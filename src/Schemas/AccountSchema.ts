@@ -1,7 +1,6 @@
 import CollectionNames from '../Shared/Constants/CollectionNames';
 import { Document, model, Schema } from 'mongoose';
 import * as timestamp from 'mongoose-timestamp';
-import passportLocalMongoose from 'passport-local-mongoose';
 
 export default interface IAccountModel extends Document {
     first_name: string;
@@ -12,6 +11,7 @@ export default interface IAccountModel extends Document {
     phone_number: string;
     address: string;
     password_hash: string;
+    password: string;
 }
 
 class AccountSchema {
@@ -28,7 +28,7 @@ class AccountSchema {
             },
             was_born: {
                 type: Date,
-                required: true,
+                required: false,
             },
             is_active: {
                 type: Boolean,
@@ -49,9 +49,8 @@ class AccountSchema {
             password_hash: {
                 type: String,
                 required: true,
-            }
+            },
         }, { versionKey: false });
-        schema.plugin(passportLocalMongoose);
         schema.plugin(timestamp, {
             createdAt: 'created_at',
             updatedAt: 'updated_at',

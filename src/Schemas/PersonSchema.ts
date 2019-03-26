@@ -11,7 +11,7 @@ export default interface IPersonModel extends Document {
 
 class PersonSchema {
 
-    static get schema() {
+    static get Schema() {
         const schema = new Schema({
             name: {
                 type: String,
@@ -41,4 +41,4 @@ class PersonSchema {
 
 }
 
-export const schema = model<IPersonModel>(CollectionNames.Persons, PersonSchema.schema);
+export const schema = model<IPersonModel>(CollectionNames.Persons, PersonSchema.Schema);

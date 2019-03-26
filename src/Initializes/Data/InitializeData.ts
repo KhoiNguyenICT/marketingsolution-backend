@@ -8,22 +8,22 @@ export class InitializeData {
 
     constructor() {
         this._personService = new PersonService();
-        this.initPersonData = this.initPersonData.bind(this);
+        this.InitPersonData = this.InitPersonData.bind(this);
     }
 
-    async init() {
+    async Init() {
         if (process.env.ENVIRONMENT_HOSTING === 'development') {
-            await this.initPersonData();
+            await this.InitPersonData();
         }
     }
 
-    async initPersonData() {
-        const json = await fs.readFileSync(this.createPath('Persons.json'), 'utf8');
+    async InitPersonData() {
+        const json = await fs.readFileSync(this.CreatePath('Persons.json'), 'utf8');
         const items = JSON.parse(json) as IPersonModel[];
-        this._personService.initialize(items);
+        this._personService.Initialize(items);
     }
 
-    private createPath(fileName: string): string {
+    private CreatePath(fileName: string): string {
         return `${__dirname}\\${fileName}`;
     }
 

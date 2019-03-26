@@ -1,30 +1,30 @@
 export interface IQueryResult<T> {
-    results: T[];
-    currentPage: number;
-    pageSize: number;
-    rowCount: number;
-    firstRowOnPage(): number;
-    lastRowOnPage(): number;
-    pageCount(): number;
+    Results: T[];
+    CurrentPage: number;
+    PageSize: number;
+    RowCount: number;
+    FirstRowOnPage(): number;
+    LastRowOnPage(): number;
+    PageCount(): number;
 }
 
 export class QueryResult<T> implements IQueryResult<T> {
 
-    results: T[];
-    currentPage: number;
-    pageSize: number;
-    rowCount: number;
+    Results: T[];
+    CurrentPage: number;
+    PageSize: number;
+    RowCount: number;
 
-    firstRowOnPage() {
-        return (this.currentPage - 1) * this.pageSize - 1;
+    FirstRowOnPage() {
+        return (this.CurrentPage - 1) * this.PageSize - 1;
     }
 
-    lastRowOnPage() {
-        return Math.min(this.currentPage * this.pageSize, this.rowCount);
+    LastRowOnPage() {
+        return Math.min(this.CurrentPage * this.PageSize, this.RowCount);
     }
 
-    pageCount() {
-        const pageCount = (this.rowCount / this.pageSize);
+    PageCount() {
+        const pageCount = (this.RowCount / this.PageSize);
         return Math.ceil(pageCount);
     }
 

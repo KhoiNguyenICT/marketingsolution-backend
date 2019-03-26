@@ -4,10 +4,10 @@ import CompanyRoutes from './CompanyRoutes';
 
 export class MainRoutes {
 
-    get routes() {
+    get Routes() {
         const app = express();
-        app.use('/person', new PersonRoute().routes);
-        app.use('/company', new CompanyRoutes().routes);
+        app.use('/person', new PersonRoute().Routes);
+        app.use('/company', new CompanyRoutes().Routes);
         return app;
     }
 

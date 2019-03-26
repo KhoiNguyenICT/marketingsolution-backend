@@ -9,7 +9,7 @@ export default interface ICompanyModel extends Document {
 
 class CompanySchema {
 
-    static get schema() {
+    static get Schema() {
         const schema = new Schema({
             name: {
                 type: String,
@@ -30,4 +30,4 @@ class CompanySchema {
 
 }
 
-export const schema = model<ICompanyModel>(CollectionNames.Companies, CompanySchema.schema);
+export const schema = model<ICompanyModel>(CollectionNames.Companies, CompanySchema.Schema);

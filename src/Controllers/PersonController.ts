@@ -11,41 +11,41 @@ export default class PersonController extends BaseController {
     constructor() {
         super();
         this._personService = new PersonService();
-        this.findById = this.findById.bind(this);
-        this.create = this.create.bind(this);
-        this.find = this.find.bind(this);
-        this.update = this.update.bind(this);
-        this.delete = this.delete.bind(this);
+        this.FindById = this.FindById.bind(this);
+        this.Create = this.Create.bind(this);
+        this.Find = this.Find.bind(this);
+        this.Update = this.Update.bind(this);
+        this.Delete = this.Delete.bind(this);
     }
 
-    async find(req: Request, res: Response, next: NextFunction) {
+    async Find(req: Request, res: Response, next: NextFunction) {
         const command: PersonQueryCommand = req.body as PersonQueryCommand;
-        const result = await this._personService.queryAsync(command);
+        const result = await this._personService.QueryAsync(command);
         return this.Ok(result, req, res, next);
     }
 
-    async findById(req: Request, res: Response, next: NextFunction) {
+    async FindById(req: Request, res: Response, next: NextFunction) {
         const id: string = req.params.id;
-        const result = await this._personService.findById(id);
+        const result = await this._personService.FindById(id);
         return this.Ok(result, req, res, next);
     }
 
-    async create(req: Request, res: Response, next: NextFunction) {
+    async Create(req: Request, res: Response, next: NextFunction) {
         const value: IPersonModel = req.body as IPersonModel;
-        const result = await this._personService.create(value);
+        const result = await this._personService.Create(value);
         return this.Ok(result, req, res, next);
     }
 
-    async update(req: Request, res: Response, next: NextFunction) {
+    async Update(req: Request, res: Response, next: NextFunction) {
         const value: IPersonModel = req.body as IPersonModel;
         const id: string = req.params.id;
-        const result = this._personService.update(id, value);
+        const result = this._personService.Update(id, value);
         return this.Ok(result, req, res, next);
     }
 
-    async delete(req: Request, res: Response, next: NextFunction) {
+    async Delete(req: Request, res: Response, next: NextFunction) {
         const id: string = req.params.id;
-        const result = this._personService.delete(id);
+        const result = this._personService.Delete(id);
         return this.Ok(result, req, res, next);
     }
 

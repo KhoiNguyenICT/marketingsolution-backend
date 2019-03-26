@@ -14,7 +14,7 @@ class Startup {
         StartupHelper.ConfigMiddleWares(this.express);
         StartupHelper.ConfigRouters(this.express);
         StartupHelper.ConfigDatabase();
-        this.initialize.init();
+        this.initialize.Init();
     }
 }
 

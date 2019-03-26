@@ -6,10 +6,10 @@ export default class CompanyRoutes {
     constructor() {
         this._companyController = new CompanyController();
     }
-    get routes() {
+    get Routes() {
         const router = express();
         const controller = this._companyController;
-        router.post('/create', controller.create);
+        router.post('/create', controller.Create);
         return router;
     }
 }

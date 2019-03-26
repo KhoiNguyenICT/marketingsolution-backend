@@ -10,12 +10,12 @@ export default class CompanyController extends BaseController {
     constructor() {
         super();
         this._companyService = new CompanyService();
-        this.create = this.create.bind(this);
+        this.Create = this.Create.bind(this);
     }
 
-    async create(req: Request, res: Response, next: NextFunction) {
+    async Create(req: Request, res: Response, next: NextFunction) {
         const value: ICompanyModel = req.body as ICompanyModel;
-        const result = await this._companyService.create(value);
+        const result = await this._companyService.Create(value);
         return this.Ok(result, req, res, next);
     }
 

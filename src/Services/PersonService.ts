@@ -10,10 +10,10 @@ export default class PersonService extends BaseService<IPersonModel> {
         super(schema);
     }
 
-    async queryAsync(command: PersonQueryCommand): Promise<QueryResult<IPersonModel>> {
+    async QueryAsync(command: PersonQueryCommand): Promise<QueryResult<IPersonModel>> {
         command.filter = { $text: { $search: command.textSearch } };
         command.populate = PopulateNames.Company;
-        const result = await this.query(command);
+        const result = await this.Query(command);
         return result;
     }
 

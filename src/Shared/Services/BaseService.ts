@@ -12,14 +12,14 @@ export default class BaseService<T extends Document> implements IRead<T>, IWrite
         this._model = schemaModel;
     }
 
-    async initialize(items: T[]) {
+    async Initialize(items: T[]) {
         const data = await this._model.find({});
         if (data.length === 0) {
             await this._model.insertMany(items);
         }
     }
 
-    async query(command: QueryCommand): Promise<QueryResult<T>> {
+    async Query(command: QueryCommand): Promise<QueryResult<T>> {
         (command.textSearch) ? (command.filter = { $text: { $search: command.textSearch } }) : (command.filter = null);
         (command.populate) ? (command.populate) : (command.populate = '');
         const data = await this._model.find(command.filter)
@@ -28,39 +28,39 @@ export default class BaseService<T extends Document> implements IRead<T>, IWrite
             .skip((command.currentPage - 1) * command.pageSize)
             .limit(command.pageSize);
         const paginationResult = new QueryResult<T>();
-        paginationResult.currentPage = command.currentPage;
-        paginationResult.rowCount = await this._model.find(command.filter).countDocuments();
-        paginationResult.pageSize = command.pageSize;
-        paginationResult.results = data;
+        paginationResult.CurrentPage = command.currentPage;
+        paginationResult.RowCount = await this._model.find(command.filter).countDocuments();
+        paginationResult.PageSize = command.pageSize;
+        paginationResult.Results = data;
         return paginationResult;
     }
 
-    async create(item: T): Promise<T> {
+    async Create(item: T): Promise<T> {
         const result = await this._model.create(item);
         return result;
     }
 
-    async find(filter = {}): Promise<T[]> {
+    async Find(filter = {}): Promise<T[]> {
         const result = await this._model.find(filter).exec();
         return result;
     }
 
-    async update(id: string, item: T): Promise<T> {
-        const result = await this._model.findByIdAndUpdate(this.toObjectId(id), item);
+    async Update(id: string, item: T): Promise<T> {
+        const result = await this._model.findByIdAndUpdate(this.ToObjectId(id), item);
         return result;
     }
 
-    async delete(id: string): Promise<T> {
-        const result = await this._model.findByIdAndRemove(this.toObjectId(id)).exec();
+    async Delete(id: string): Promise<T> {
+        const result = await this._model.findByIdAndRemove(this.ToObjectId(id)).exec();
         return result;
     }
 
-    async findById(id: string): Promise<T> {
-        const result = await this._model.findById(this.toObjectId(id)).exec();
+    async FindById(id: string): Promise<T> {
+        const result = await this._model.findById(this.ToObjectId(id)).exec();
         return result;
     }
 
-    private toObjectId(id: string): Types.ObjectId {
+    private ToObjectId(id: string): Types.ObjectId {
         const result = Types.ObjectId(id);
         return result;
     }

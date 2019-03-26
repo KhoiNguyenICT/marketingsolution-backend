@@ -6,14 +6,14 @@ export default class PersonRoutes {
     constructor() {
         this._personController = new PersonController();
     }
-    get routes() {
+    get Routes() {
         const router = express();
         const controller = this._personController;
-        router.post('/list', controller.find);
-        router.post('/create', controller.create);
-        router.put('/:id', controller.update);
-        router.get('/:id', controller.findById);
-        router.delete('/:id', controller.delete);
+        router.post('/list', controller.Find);
+        router.post('/create', controller.Create);
+        router.put('/:id', controller.Update);
+        router.get('/:id', controller.FindById);
+        router.delete('/:id', controller.Delete);
 
         return router;
     }

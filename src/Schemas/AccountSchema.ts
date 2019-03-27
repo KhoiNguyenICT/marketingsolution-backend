@@ -12,6 +12,8 @@ export default interface IAccountModel extends Document {
     address: string;
     password_hash: string;
     password: string;
+    created_at: Date;
+    updated_at: Date;
 }
 
 class AccountSchema {
@@ -37,10 +39,13 @@ class AccountSchema {
             email: {
                 type: String,
                 required: true,
+                unique: true,
+                match: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/,
             },
             phone_number: {
                 type: String,
                 required: true,
+                unique: true,
             },
             address: {
                 type: String,

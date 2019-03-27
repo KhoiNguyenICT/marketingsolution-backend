@@ -1,4 +1,5 @@
 export default class StringExtension {
+
     static Unaccent(text: string): string {
         text = text.toLowerCase();
         text = text.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, 'a');
@@ -19,4 +20,5 @@ export default class StringExtension {
         (populates.length = 1) ? (populateString = populates[0]) : (populateString = populates.join(' '));
         return populateString;
     }
+
 }

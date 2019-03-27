@@ -13,6 +13,7 @@ export default class AccountRoutes {
         const router = express();
         const controller = this._accountController;
         router.post('/create', controller.Create);
+        router.post('/login', controller.Login);
         return router;
     }
 

@@ -45,7 +45,7 @@ export default class AccountController extends BaseController {
             }, process.env.JWT_KEY, { expiresIn: '24h' });
             return this.Ok(JsonExtension.TokenMessage(token), req, res, next);
         }
-        return this.Ok(JsonExtension.JsonMessage('Account not exist'), req, res, next)
+        return this.Ok(JsonExtension.JsonMessage('Account not exist'), req, res, next);
     }
 
 }

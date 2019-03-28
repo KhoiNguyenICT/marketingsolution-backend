@@ -1,10 +1,10 @@
 import { BaseController } from './BaseController';
-import AccountService from '../Services/AccountService';
 import { Request, Response, NextFunction } from 'express';
-import IAccountModel from '../Schemas/AccountSchema';
-import AccountLoginCommand from '../Commands/AccountLoginCommand';
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
+import AccountLoginCommand from '../Commands/AccountLoginCommand';
+import AccountService from '../Services/AccountService';
+import IAccountModel from '../Schemas/AccountSchema';
 import JsonExtension from '../Extensions/JsonExtension';
 
 export default class AccountController extends BaseController {

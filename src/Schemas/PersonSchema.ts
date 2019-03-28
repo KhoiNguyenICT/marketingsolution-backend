@@ -30,6 +30,16 @@ class PersonSchema {
                 ref: CollectionNames.Companies,
                 required: false,
             },
+            created_by: {
+                type: Schema.Types.ObjectId,
+                ref: CollectionNames.Accounts,
+                required: true,
+            },
+            updated_by: {
+                type: Schema.Types.ObjectId,
+                ref: CollectionNames.Accounts,
+                required: true,
+            },
         }, { versionKey: false });
         schema.plugin(timestamp, {
             createdAt: 'created_at',

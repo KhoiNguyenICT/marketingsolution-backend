@@ -17,7 +17,7 @@ export default class StringExtension {
 
     static PopulateString(populates: string[]): string {
         let populateString = '';
-        (populates.length = 1) ? (populateString = populates[0]) : (populateString = populates.join(' '));
+        (populates.length === 1) ? (populateString = populates[0]) : (populateString = populates.join(' '));
         return populateString;
     }
 

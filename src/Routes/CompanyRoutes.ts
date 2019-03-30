@@ -1,6 +1,5 @@
 import * as express from 'express';
 import CompanyController from '../Controllers/CompanyController';
-// tslint:disable-next-line:no-var-requires
 const GuardExtension = require('../Extensions/GuardExtension');
 
 export default class CompanyRoutes {

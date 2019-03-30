@@ -20,7 +20,8 @@ export default class AccountController extends BaseController {
 
     async Create(req: Request, res: Response, next: NextFunction) {
         const value: IAccountModel = req.body as IAccountModel;
-        if (await this._accountService.Find({ email: value.email })) {
+        const accounts = await this._accountService.Find({ email: value.email });
+        if (accounts.length) {
             return this.Ok(JsonExtension.JsonMessage('Account existed'), req, res, next);
         }
         const result = await this._accountService.CreateAsync(value);

@@ -1,10 +1,10 @@
 import CollectionNames from '../Shared/Constants/CollectionNames';
-import PopulateNames from '../Shared/Constants/PopulateNames';
 import { Document, model, Schema } from 'mongoose';
 import * as timestamp from 'mongoose-timestamp';
 
 export default interface IPersonModel extends Document {
     name: string;
+    nick_name: string;
     level: string;
     company: string;
 }

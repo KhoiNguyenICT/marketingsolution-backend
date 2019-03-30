@@ -28,7 +28,8 @@
         "no-empty-interface": false,
         "max-classes-per-file": false,
         "no-unused-expression": false,
-        "no-conditional-assignment": false
+        "no-conditional-assignment": false,
+        "no-var-requires": false
     },
     "rulesDirectory": []
 }

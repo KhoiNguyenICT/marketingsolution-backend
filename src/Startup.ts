@@ -4,18 +4,19 @@ import { InitializeData } from './Initializes/Data/InitializeData';
 
 class Startup {
 
-    public express: express.Application;
+    public application: express.Application;
     private initialize: InitializeData;
 
     constructor() {
-        this.express = express();
+        this.application = express();
         this.initialize = new InitializeData();
         StartupHelper.ConfigEnvironment();
-        StartupHelper.ConfigMiddleWares(this.express);
-        StartupHelper.ConfigRouters(this.express);
+        StartupHelper.ConfigMiddleWares(this.application);
+        StartupHelper.ConfigRouters(this.application);
         StartupHelper.ConfigDatabase();
+        StartupHelper.ConfigMultipleLanguage(this.application);
         this.initialize.Init();
     }
 }
 
-export default new Startup().express;
+export default new Startup().application;

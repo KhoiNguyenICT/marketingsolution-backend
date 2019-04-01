@@ -6,6 +6,7 @@ import * as mongoose from 'mongoose';
 import * as morgan from 'morgan';
 import * as mongooseMorgan from 'mongoose-morgan';
 import ConnectionNames from '../Shared/Constants/CollectionNames';
+import * as i18n from 'i18n';
 
 export class StartupHelper {
 
@@ -30,6 +31,15 @@ export class StartupHelper {
     public static ConfigDatabase() {
         (mongoose as any).Promise = global.Promise;
         mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false });
+    }
+
+    public static ConfigMultipleLanguage(application: Application) {
+        application.use(i18n.init);
+        i18n.config({
+            locales: ['en', 'vi'],
+            directory: __dirname + 'Locales',
+            cookie: 'lang',
+        });
     }
 
 }

@@ -40,6 +40,11 @@ export default class BaseService<T extends Document> implements IRead<T>, IWrite
         return result;
     }
 
+    async CreateMany(items: T[]): Promise<T[]> {
+        await this._model.insertMany(items);
+        return items;
+    }
+
     async Find(filter = {}): Promise<T[]> {
         const result = await this._model.find(filter).exec();
         return result;

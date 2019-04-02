@@ -7,4 +7,5 @@ export default class CollectionNames {
     static Configurations: string = 'configurations';
     static Videos: string = 'videos';
     static Categories: string = 'categories';
+    static Assets: string = 'assets';
 }

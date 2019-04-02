@@ -1,4 +1,4 @@
-export default class AccountLoginCommand {
+export default interface AccountLoginCommand {
     email: string;
     password: string;
 }

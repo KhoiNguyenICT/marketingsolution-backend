@@ -1,6 +1,6 @@
 import QueryCommand from './QueryCommand';
 
-export default class PersonQueryCommand implements QueryCommand {
+export default interface PersonQueryCommand extends QueryCommand {
     currentPage: number;
     pageSize: number;
     filter: any;

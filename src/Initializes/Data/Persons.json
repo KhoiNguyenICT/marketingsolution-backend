@@ -1,87 +1,30 @@
-[{
-        "name": "Tống Giang",
-        "nick_name": "Hô Bảo Nghĩa",
-        "level": "Thiên Khôi Tinh"
+[
+    {
+        "name": "Nguyễn Văn Hiếu",
+        "nick_name": "Mr Tiệm"
     },
     {
-        "name": "Lư Tuấn Nghĩa",
-        "nick_name": "Ngọc Kỳ Lân",
-        "level": "Thiên Cương Tinh"
+        "name": "Nguyễn Sơn",
+        "nick_name": "Sơn Mountain"
     },
     {
-        "name": "Ngô Dụng",
-        "nick_name": "Trí Đa Tinh",
-        "level": "Thiên Cơ Tinh"
+        "name": "Đào Khôi Nguyên",
+        "nick_name": "Ong Bắp Cày"
     },
     {
-        "name": "Công Tôn Thắng",
-        "nick_name": "Nhập Vân Long",
-        "level": "Thiên Nhân Tinh"
+        "name": "Nguyễn Tuấn",
+        "nick_name": "Tuấn Sako"
     },
     {
-        "name": "Quan Thắng",
-        "nick_name": "Đại Đao",
-        "level": "Thiên Dũng Tinh"
+        "name": "Lương Nhật Anh",
+        "nick_name": "Nhật Anh Béo"
     },
     {
-        "name": "Lâm Xung",
-        "nick_name": "Báo Tử Đầu",
-        "level": "Thiên Hùng Tinh"
+        "name": "Nhật Minh",
+        "nick_name": "Minh Paparazzi"
     },
     {
-        "name": "Tần Minh",
-        "nick_name": "Tích Lịch Hỏa",
-        "level": "Thiên Mãnh Tinh"
-    },
-
-    {
-        "name": "Hô Duyên Chước",
-        "nick_name": "Song Chiên",
-        "level": "Thiên Uy Tinh"
-    },
-    {
-        "name": "Hoa Vinh",
-        "nick_name": "Tiểu Lý Quảng",
-        "level": "Thiên Anh Tinh"
-    },
-    {
-        "name": "Sài Tiến",
-        "nick_name": "Tiểu Toàn Phong",
-        "level": "Thiên Quý Tinh"
-    },
-    {
-        "name": "Lý Ứng",
-        "nick_name": "Phác Thiên Bằng",
-        "level": "Thiên Phú Tinh"
-    },
-    {
-        "name": "Chu Đồng",
-        "nick_name": "Mỹ Nhiệm Công",
-        "level": "Thiên Mãn Tinh"
-    },
-    {
-        "name": "Lỗ Trí Thâm",
-        "nick_name": "Hoa Hòa Thượng",
-        "level": "Thiên Cô Tinh"
-    },
-    {
-        "name": "Võ Tòng",
-        "nick_name": "Hành Giả",
-        "level": "Thiên Thương Tinh"
-    },
-    {
-        "name": "Đổng Bình",
-        "nick_name": "Song Thương Tướng",
-        "level": "Thiên Lập Tinh"
-    },
-    {
-        "name": "Trương Thanh",
-        "nick_name": "Một Vũ Tiễn",
-        "level": "Thiên Tiệp Tinh"
-    },
-    {
-        "name": "Dương Chí",
-        "nick_name": "Thanh Diện Thú",
-        "level": "Thiên Âm Tinh"
+        "name": "Ngọc Long",
+        "nick_name": "Trứng Rồng"
     }
 ]

@@ -1,4 +1,4 @@
-export default class AccountClaimCommand {
+export default interface AccountClaimCommand {
     account_id: string;
     email: string;
     first_name: string;

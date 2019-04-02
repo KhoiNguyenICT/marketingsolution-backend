@@ -2,24 +2,18 @@ import CollectionNames from '../Shared/Constants/CollectionNames';
 import { Document, model, Schema } from 'mongoose';
 import * as timestamp from 'mongoose-timestamp';
 
-export default interface IPersonModel extends Document {
+export default interface ITagModel extends Document {
     name: string;
-    nick_name: string;
-    level: string;
-    company: string;
 }
 
-class PersonSchema {
+class TagSchema {
 
     static get Schema() {
         const schema = new Schema({
             name: {
                 type: String,
                 required: true,
-            },
-            nick_name: {
-                type: String,
-                required: true,
+                unique: true,
             },
         }, { versionKey: false });
         schema.plugin(timestamp, {
@@ -32,4 +26,4 @@ class PersonSchema {
 
 }
 
-export const schema = model<IPersonModel>(CollectionNames.Persons, PersonSchema.Schema);
+export const schema = model<ITagModel>(CollectionNames.Tags, TagSchema.Schema);

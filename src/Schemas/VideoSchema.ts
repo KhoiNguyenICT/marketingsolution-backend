@@ -1,26 +1,29 @@
 import CollectionNames from '../Shared/Constants/CollectionNames';
-import { Document, model, Schema, Types } from 'mongoose';
+import { Document, model, Schema } from 'mongoose';
 import * as timestamp from 'mongoose-timestamp';
 
-export default interface ICompanyModel extends Document {
-    name: string;
-    address: string;
-    created_by: Types.ObjectId;
-    updated_by: Types.ObjectId;
+export default interface IVideoModel extends Document {
+    title: string;
 }
 
-class CompanySchema {
+class VideoSchema {
 
     static get Schema() {
         const schema = new Schema({
-            name: {
+            title: {
                 type: String,
                 required: true,
+                unique: true,
             },
-            address: {
+            description: {
                 type: String,
-                required: true,
+                required: false,
             },
+            tags: [{
+                type: Schema.Types.ObjectId,
+                ref: CollectionNames.Tags,
+                required: false,
+            }],
             created_by: {
                 type: Schema.Types.ObjectId,
                 ref: CollectionNames.Accounts,
@@ -42,4 +45,4 @@ class CompanySchema {
 
 }
 
-export const schema = model<ICompanyModel>(CollectionNames.Companies, CompanySchema.Schema);
+export const schema = model<IVideoModel>(CollectionNames.Videos, VideoSchema.Schema);

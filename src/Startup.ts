@@ -14,7 +14,6 @@ class Startup {
         StartupHelper.ConfigMiddleWares(this.application);
         StartupHelper.ConfigRouters(this.application);
         StartupHelper.ConfigDatabase();
-        StartupHelper.ConfigMultipleLanguage(this.application);
         this.initialize.Init();
     }
 }

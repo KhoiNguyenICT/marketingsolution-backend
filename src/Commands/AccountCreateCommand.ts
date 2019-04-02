@@ -1,4 +1,4 @@
-export default class AccountCreateCommand {
+export default interface AccountCreateCommand {
     first_name: string;
     last_name: string;
     was_born: Date;
